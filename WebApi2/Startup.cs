@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
+using WebApi2.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace WebApi2
 {
     public class Startup
@@ -22,6 +25,15 @@ namespace WebApi2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            //services.AddDbContext<SignUpDBContext>(Options =>
+            //Options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddDbContext<SignUpDBContext>(Options =>
+            Options.UseSqlServer(Configuration.GetConnectionString("CoustmerAppCon")));
+
+
             //Enable cors 
             services.AddCors(c =>
            {
