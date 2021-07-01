@@ -11,7 +11,5 @@ namespace WebApi2.Models
     {
         public string Email { get; set; }
         public string Area { get; set; }
-        public string Body { get; set; }
-        //public List<IFormFile> Attachments { get; set; }
     }
 }

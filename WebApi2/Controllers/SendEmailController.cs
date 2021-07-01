@@ -24,7 +24,7 @@ namespace WebApi2.Controllers
             string name = email.Substring(0, index);
             string subject = "Desease Alert";
             string areaName = em.Area;
-            string desease = "";
+            string desease = "Apple Black Rot";
             string body = "Hi "+ name + "! , \n A new desese has stricked in following area: " 
                           + areaName + "\nYour plants may get infected with following desease:"
                           + desease+ "\nKindly take precautions \n for any further queries please contact Us \n regards Plantdeseasedetection Admin!";

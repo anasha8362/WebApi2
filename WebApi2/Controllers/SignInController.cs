@@ -50,22 +50,24 @@ namespace WebApi2.Controllers
             }
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public JsonResult post(Users user)
         {
 
-            var tb = _context.Users.ToList();
+            //var tb = _context.Users.ToList();
+            var authUser = _context.Users.Where((x) => x.Email == user.Email && x.Password == user.Password).FirstOrDefault();
             bool found = false;
-            List<string> pNotes = new List<string>();
-            foreach (var a in tb)
-            {
-                if (user.Email == a.Email && user.Password == a.Password)
-                {
-                    found = true;
-                }
-            }
+            //List<string> pNotes = new List<string>();
+            //foreach (var a in tb)
+            //{
+            //    if (user.Email == a.Email && user.Password == a.Password)
+            //    {
+            //        found = true;
+            //    }
+            //}
             
-            if (found == false)
+            if (authUser == null)
             {
                 
                 return new JsonResult(found.ToString());
@@ -73,6 +75,7 @@ namespace WebApi2.Controllers
             }
             else
             {
+                found = true;
                 return new JsonResult(found.ToString());
             }
         }
